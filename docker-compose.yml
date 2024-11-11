@@ -1,0 +1,37 @@
+networks:
+  backend:    
+  frontend:
+
+services:
+  uttambsolutionsstaff:
+    container_name: uttamb_solutions_limited_staffs
+    image: ${DOCKER_REGISTRY-}uttambsolutionsstaff
+    build:
+      context: .
+      dockerfile: Uttambsolutionsstaff/Dockerfile
+    networks:
+       - backend
+
+  uttambsolutionscustomer:
+    container_name: uttamb_solutions_limited_customers
+    image: ${DOCKER_REGISTRY-}uttambsolutionscustomer
+    build:
+      context: .
+      dockerfile: Uttambsolutionscustomer/Dockerfile
+    networks:
+       - backend
+
+
+  apigateway:
+    container_name: uttamb_solutions_api_gateway
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: ApiGateWay/Dockerfile
+    ports:
+      - 8002:8080
+    networks:
+       - backend
+       - frontend
+
+

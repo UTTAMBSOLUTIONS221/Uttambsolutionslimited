@@ -1,0 +1,151 @@
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/Permission/Getuttambsolutionspermissiondata",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "uttambsolutionsstaff",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Permission/Getuttambsolutionspermissiondata"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Permission/Registeruttambsolutionspermissiondata",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "uttambsolutionsstaff",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Permission/Registeruttambsolutionspermissiondata"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Permission/Getuttambsolutionspermissiondatabyid{Permissionid}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "uttambsolutionsstaff",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Permission/Getuttambsolutionspermissiondatabyid{Permissionid}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Role/Getuttambsolutionsroledata",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "uttambsolutionsstaff",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Role/Getuttambsolutionsroledata"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Role/Registeruttambsolutionsroledata",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "uttambsolutionsstaff",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Role/Registeruttambsolutionsroledata"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Role/Getuttambsolutionsroledatabyid{Roleid}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "uttambsolutionsstaff",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Role/Getuttambsolutionsroledatabyid{Roleid}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Staff/Getuttambsolutionsstaffdata",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "uttambsolutionsstaff",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Staff/Getuttambsolutionsstaffdata"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Staff/Registeruttambsolutionsstaffdata",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "uttambsolutionsstaff",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Staff/Registeruttambsolutionsstaffdata"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Staff/Getuttambsolutionsstaffdatabyid{Staffid}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "uttambsolutionsstaff",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Staff/Getuttambsolutionsstaffdatabyid{Staffid}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Customer/Getuttambsolutionscustomerdata",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "uttambsolutionscustomer",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Customer/Getuttambsolutionscustomerdata"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Customer/Registeruttambsolutionscustomerdata",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "uttambsolutionscustomer",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Customer/Registeruttambsolutionscustomerdata"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Customer/Getuttambsolutionscustomerdatabyid{Customerid}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "uttambsolutionscustomer",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Customer/Getuttambsolutionscustomerdatabyid{Customerid}"
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:8002"
+  }
+}
