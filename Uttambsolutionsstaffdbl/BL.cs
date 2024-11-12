@@ -108,12 +108,47 @@ namespace Uttambsolutionsstaffdbl
         #endregion
 
         #region Authentication Management
-        public Task<Uttambsolutionsstaffresponce> Validateuttambsolutionsstaffdata(string Username, string Password)
+        public Task<Uttambsolutionsstaffresponce> Validateuttambsolutionsstaffdata(Uttambsolurionsstaffauth obj)
         {
             return Task.Run(() =>
             {
                 Uttambsolutionsstaffresponce userModel = new Uttambsolutionsstaffresponce { };
-                var resp = db.AuthRepository.Validateuttambsolutionsstaffdata(Username);
+                var resp = db.AuthRepository.Validateuttambsolutionsstaffdata(obj.Username);
+                if (resp.RespStatus == 0)
+                {
+                    Encryptdecrypt sec = new Encryptdecrypt();
+                    string descpass = sec.Decrypt(resp.Usermodel.Passwords, resp.Usermodel.Passharsh);
+                    if (obj.Password == descpass)
+                    {
+                        userModel = new Uttambsolutionsstaffresponce
+                        {
+                            RespStatus = resp.RespStatus,
+                            RespMessage = resp.RespMessage,
+                            Token = "",
+                            Usermodel = new Usermodeldataresponce
+                            {
+                                Loginid = resp.Usermodel.Loginid,
+                                Fullname = resp.Usermodel.Fullname,
+                                Phonenumber = resp.Usermodel.Phonenumber,
+                                Emailaddress = resp.Usermodel.Emailaddress,
+                                Roleid = resp.Usermodel.Roleid,
+                                Passharsh = resp.Usermodel.Passharsh,
+                                Passwords = resp.Usermodel.Passwords,
+                            }
+                        };
+                        return userModel;
+                    }
+                    else
+                    {
+                        userModel.RespStatus = 1;
+                        userModel.RespMessage = "Incorrect Username or Password";
+                    }
+                }
+                else
+                {
+                    userModel.RespStatus = 1;
+                    userModel.RespMessage = resp.RespMessage;
+                }
                 return userModel;
             });
         }
