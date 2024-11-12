@@ -1,7 +1,7 @@
 ﻿using Dapper;
+using Microsoft.Data.SqlClient;
 using Newtonsoft.Json;
 using System.Data;
-using System.Data.SqlClient;
 using Uttambsolutionsstaffdbl.Entities;
 using Uttambsolutionsstaffdbl.Models;
 

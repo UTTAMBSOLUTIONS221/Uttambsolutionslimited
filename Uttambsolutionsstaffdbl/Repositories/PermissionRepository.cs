@@ -1,8 +1,8 @@
 ﻿using Dapper;
+using Microsoft.Data.SqlClient;
+using System.Data;
 using Uttambsolutionsstaffdbl.Entities;
 using Uttambsolutionsstaffdbl.Models;
-using System.Data;
-using System.Data.SqlClient;
 
 namespace Uttambsolutionsstaffdbl.Repositories
 {
