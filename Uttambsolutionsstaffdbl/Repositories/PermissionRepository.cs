@@ -11,7 +11,6 @@ namespace Uttambsolutionsstaffdbl.Repositories
         public PermissionRepository(string connectionString) : base(connectionString)
         {
         }
-
         public IEnumerable<Uttambsolutionspermission> Getuttambsolutionspermissiondata()
         {
             using (var connection = new SqlConnection(_connString))
