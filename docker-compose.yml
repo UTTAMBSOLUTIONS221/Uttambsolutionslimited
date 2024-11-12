@@ -3,17 +3,6 @@ networks:
   frontend:
 
 services:
-  uttambsolutionsstaffdb:
-     container_name: uttamb_solutions_limited_staff_database
-     image: mcr.microsoft.com/mssql/server:2022-latest
-     environment:
-       - ACCEPT_EULA=Y
-       -  SA_PASSWORD=Password123!
-     networks:
-       - backend
-     ports:
-       - 1433:1433
-
   uttambsolutionsstaff:
     container_name: uttamb_solutions_limited_staffs
     image: ${DOCKER_REGISTRY-}uttambsolutionsstaff
@@ -22,10 +11,6 @@ services:
       dockerfile: Uttambsolutionsstaff/Dockerfile
     networks:
        - backend
-    environment:
-      - ConnectionStrings__DefaultConnection=Server=host.docker.internal,1433;Database=Uttambsolutionsstaff;User Id=sa;Password=Password123!;TrustServerCertificate=True;
-    depends_on:
-      - uttambsolutionsstaffdb
 
 
   uttambsolutionscustomer:
