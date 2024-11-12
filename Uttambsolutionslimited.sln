@@ -21,7 +21,7 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateWay", "ApiGateWay\ApiGateWay.csproj", "{E252FFF5-F9B0-455A-8816-B1271ECA7211}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jwtauthenticationmanager", "..\Jwtauthenticationmanager\Jwtauthenticationmanager.csproj", "{967D6E4D-A98D-4647-AFBD-36D76289F14E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jwtauthenticationmanager", "..\Jwtauthenticationmanager\Jwtauthenticationmanager.csproj", "{967D6E4D-A98D-4647-AFBD-36D76289F14E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,7 +97,7 @@ Global
 		{1C27AB04-9415-4AB3-9D70-B4C13AA7A8D8} = {1CC6AE53-C501-4648-9863-54D847CF10F5}
 		{A5010B5E-01B2-41AC-A826-493273FD1FF7} = {1C27AB04-9415-4AB3-9D70-B4C13AA7A8D8}
 		{383741AE-A56E-42D8-A9A4-34B5438D2572} = {1C27AB04-9415-4AB3-9D70-B4C13AA7A8D8}
-		{3C2FC00B-B8E8-482C-A22A-72D57AF28EDB} = {1CC6AE53-C501-4648-9863-54D847CF10F5}
+		{3C2FC00B-B8E8-482C-A22A-72D57AF28EDB} = {C70FC9A1-BAF6-407A-A451-3FB92BCF3DB0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9E7F1A75-EED0-49ED-B503-1A96875ECA8E}
