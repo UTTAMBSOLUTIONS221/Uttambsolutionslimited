@@ -4,7 +4,7 @@
     {
         public static string ShareConnectionString(IConfiguration config)
         {
-            return config["ConnectionStrings:DatabaseConnection"];
+            return config["ConnectionStrings:DefaultConnection"];
         }
         public static void LogError(string userName, Exception ex, bool isError = true)
         {
