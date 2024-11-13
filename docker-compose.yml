@@ -1,8 +1,10 @@
 networks:
-  backend:    
+  backend: 
+    driver: bridge
   frontend:
 
 services:
+  # Staff Microservice
   uttambsolutionsstaff:
     container_name: uttamb_solutions_limited_staffs
     image: ${DOCKER_REGISTRY-}uttambsolutionsstaff
@@ -12,7 +14,7 @@ services:
     networks:
        - backend
 
-
+  # Customer Microservice
   uttambsolutionscustomer:
     container_name: uttamb_solutions_limited_customers
     image: ${DOCKER_REGISTRY-}uttambsolutionscustomer
@@ -22,7 +24,7 @@ services:
     networks:
        - backend
 
-
+  # API Gateway
   apigateway:
     container_name: uttamb_solutions_api_gateway
     image: ${DOCKER_REGISTRY-}apigateway
@@ -34,3 +36,19 @@ services:
     networks:
        - backend
        - frontend
+
+  # SQL Server Database Service
+  sqlserver:
+    container_name: sqlserver
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Password123!
+    ports:
+      - "1433:1433"
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "1433"]
+      interval: 30s
+      retries: 5
