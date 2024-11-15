@@ -10,21 +10,17 @@ builder.Services.Addcustomjwtauthentication();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Add CORS service and configure it
+// Add services to the container.
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAllOrigins", policy =>
+    options.AddPolicy("AllowReactApp", policy =>
     {
-        policy.AllowAnyOrigin()
-              .AllowAnyMethod()
-              .AllowAnyHeader();
+        policy.WithOrigins("http://localhost:3000") // Allow requests from React app
+              .AllowAnyHeader() // Allow all headers (e.g., Content-Type, Authorization)
+              .AllowAnyMethod(); // Allow all HTTP methods (GET, POST, etc.)
     });
 });
-
 var app = builder.Build();
-
-// Apply CORS middleware
-app.UseCors("AllowAllOrigins");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -32,6 +28,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+// Use CORS policy
+app.UseCors("AllowSpecificOrigin");
+
 
 app.UseAuthentication();
 app.UseAuthorization();
