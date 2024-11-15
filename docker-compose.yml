@@ -25,8 +25,8 @@ services:
     networks:
        - backend
     environment:
-      - DB_HOST=Uttambsolutionsstaffdb
-      - DB_NAME=Uttambsolutionsstaff
+      - DB_HOST=uttamb_solutions_limited_staff_server
+      - DB_NAME=Uttambsolutionsstaffdb
       - DB_USERNAME=sa
       - DB_SA_PASSWORD=Password123!
 

@@ -1,4 +1,7 @@
-﻿namespace Uttambsolutionsstaff
+﻿using Dapper;
+using Microsoft.Data.SqlClient;
+
+namespace Uttambsolutionsstaff
 {
     public class Util
     {
@@ -9,10 +12,52 @@
             var Dbname = Environment.GetEnvironmentVariable("DB_NAME");
             var Dbusername = Environment.GetEnvironmentVariable("DB_USERNAME");
             var Dbpassword = Environment.GetEnvironmentVariable("DB_SA_PASSWORD");
-            var Connectionstring = $"Data Source={Dbhost};Database={Dbname};User Id={Dbusername};Password={Dbpassword};TrustServerCertificate=true";
-            // Optionally, use the connection string from the app configuration if available
-            return Connectionstring;
+            // Construct the connection string
+            var connectionString = $"Data Source={Dbhost};Database={Dbname};User Id={Dbusername};Password={Dbpassword};TrustServerCertificate=true";
+
+            //EnsureDatabaseAndTables(Dbname, connectionString);
+            return connectionString;
         }
+
+        private static void EnsureDatabaseAndTables(string Dbname, string connectionString)
+        {
+            // Connect to master database to check if the target database exists
+            var masterConnectionString = connectionString.Replace($"Database={Dbname}", "Database=master");
+
+            using (var connection = new SqlConnection(masterConnectionString))
+            {
+                connection.Open();
+
+                // Check if database exists
+                var dbExistsQuery = "SELECT database_id FROM sys.databases WHERE Name = @DbName";
+                var databaseId = connection.QueryFirstOrDefault<int?>(dbExistsQuery, new { DbName = Dbname });
+
+                if (!databaseId.HasValue)
+                {
+                    // Create the database if it doesn't exist
+                    connection.Execute($"CREATE DATABASE [{Dbname}]");
+                }
+            }
+
+            // Connect to the target database to check and create tables if needed
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Check if the target table exists and create it if it doesn’t
+                var tableName = "YourTableName"; // Replace with your actual table name
+                var tableExistsQuery = $@"
+                    IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = @TableName)
+                    BEGIN
+                        CREATE TABLE {tableName} (
+                            Id INT PRIMARY KEY,
+                            Name NVARCHAR(100)
+                        )
+                    END";
+                connection.Execute(tableExistsQuery, new { TableName = tableName });
+            }
+        }
+
         public static void LogError(string userName, Exception ex, bool isError = true)
         {
             try
