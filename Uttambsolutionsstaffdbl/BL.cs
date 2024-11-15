@@ -156,6 +156,8 @@ namespace Uttambsolutionsstaffdbl
                             Expiresin = (int)Tokenexpirytimestamp.Subtract(DateTime.Now).TotalSeconds,
                             Usermodel = new Usermodeldataresponce
                             {
+                                RespStatus = resp.RespStatus,
+                                RespMessage = resp.RespMessage,
                                 Loginid = resp.Loginid,
                                 Fullname = resp.Fullname,
                                 Phonenumber = resp.Phonenumber,
