@@ -1,6 +1,11 @@
 networks:
-  backend: 
+  backend:
+    driver: bridge
   frontend:
+    driver: bridge  # Explicitly define 'frontend' as a bridge network
+
+volumes:
+  sql_data:  # Declare the volume for persistent storage
 
 services:
   # Staff Database 
@@ -12,8 +17,11 @@ services:
         - SA_PASSWORD=Password123!
      ports:
         - "18001:1433"
+     volumes:
+        - sql_data:/var/opt/mssql  # Persistent volume
      networks:
         - backend
+     restart: always  # Automatically restart container on failure
 
   # Staff Microservice
   uttambsolutionsstaff:

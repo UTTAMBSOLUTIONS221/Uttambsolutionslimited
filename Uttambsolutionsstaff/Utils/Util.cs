@@ -12,8 +12,10 @@ namespace Uttambsolutionsstaff
             var Dbname = Environment.GetEnvironmentVariable("DB_NAME");
             var Dbusername = Environment.GetEnvironmentVariable("DB_USERNAME");
             var Dbpassword = Environment.GetEnvironmentVariable("DB_SA_PASSWORD");
-            // Construct the connection string
-            return $"Data Source={Dbhost};Database={Dbname};User Id={Dbusername};Password={Dbpassword};TrustServerCertificate=true";
+            var connectionString = $"Data Source={Dbhost};Database={Dbname};User Id={Dbusername};Password={Dbpassword};TrustServerCertificate=true";
+
+            EnsureDatabaseAndTables(Dbname, connectionString);
+            return connectionString;
         }
 
         private static void EnsureDatabaseAndTables(string Dbname, string connectionString)
@@ -34,24 +36,6 @@ namespace Uttambsolutionsstaff
                     // Create the database if it doesn't exist
                     connection.Execute($"CREATE DATABASE [{Dbname}]");
                 }
-            }
-
-            // Connect to the target database to check and create tables if needed
-            using (var connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                // Check if the target table exists and create it if it doesn’t
-                var tableName = "YourTableName"; // Replace with your actual table name
-                var tableExistsQuery = $@"
-                    IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = @TableName)
-                    BEGIN
-                        CREATE TABLE {tableName} (
-                            Id INT PRIMARY KEY,
-                            Name NVARCHAR(100)
-                        )
-                    END";
-                connection.Execute(tableExistsQuery, new { TableName = tableName });
             }
         }
 
