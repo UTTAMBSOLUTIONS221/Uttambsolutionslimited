@@ -1,6 +1,18 @@
 {
   "Routes": [
     {
+      "UpstreamPathTemplate": "/api/Staffauth/Staffauthenticate",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "uttambsolutionsstaff",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Staffauth/Staffauthenticate"
+    },
+    {
       "UpstreamPathTemplate": "/api/Permission/Getuttambsolutionspermissiondata",
       "UpstreamHttpMethod": [ "GET" ],
       "DownstreamScheme": "http",
