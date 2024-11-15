@@ -10,14 +10,14 @@ namespace Uttambsolutionsstaffdbl.Repositories
         public AuthRepository(string connectionString) : base(connectionString)
         {
         }
-        public Uttambsolutionsstaffresponce Validateuttambsolutionsstaffdata(string Username)
+        public Usermodeldataresponce Validateuttambsolutionsstaffdata(string Username)
         {
             using (var connection = new SqlConnection(_connString))
             {
                 connection.Open();
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@Username", Username);
-                return connection.Query<Uttambsolutionsstaffresponce>("Usp_Validateuttambsolutionsstaffdata", parameters, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                return connection.Query<Usermodeldataresponce>("Usp_Validateuttambsolutionsstaffdata", parameters, commandType: CommandType.StoredProcedure).FirstOrDefault();
             }
         }
     }

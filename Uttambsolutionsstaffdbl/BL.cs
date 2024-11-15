@@ -98,7 +98,7 @@ namespace Uttambsolutionsstaffdbl
                 if (obj.Staffid == 0)
                 {
                     obj.Passwords = sec.Encrypt(obj.Passwords, Passwordhash);
-                    obj.Passharsh = Passwordhash;
+                    obj.Passwordhash = Passwordhash;
                 }
                 var Resp = db.StaffRepository.Registeruttambsolutionsstaffdata(JsonConvert.SerializeObject(obj));
                 return Resp;
@@ -124,7 +124,7 @@ namespace Uttambsolutionsstaffdbl
                 if (resp.RespStatus == 0)
                 {
                     Encryptdecrypt sec = new Encryptdecrypt();
-                    string descpass = sec.Decrypt(resp.Usermodel.Passwords, resp.Usermodel.Passharsh);
+                    string descpass = sec.Decrypt(resp.Passwords, resp.Passwordhash);
                     if (obj.Password == descpass)
                     {
                         var Tokenexpirytimestamp = DateTime.Now.AddMinutes(JWT_TOKEN_VALIDITY_MINS);
@@ -156,13 +156,13 @@ namespace Uttambsolutionsstaffdbl
                             Expiresin = (int)Tokenexpirytimestamp.Subtract(DateTime.Now).TotalSeconds,
                             Usermodel = new Usermodeldataresponce
                             {
-                                Loginid = resp.Usermodel.Loginid,
-                                Fullname = resp.Usermodel.Fullname,
-                                Phonenumber = resp.Usermodel.Phonenumber,
-                                Emailaddress = resp.Usermodel.Emailaddress,
-                                Roleid = resp.Usermodel.Roleid,
-                                Passharsh = resp.Usermodel.Passharsh,
-                                Passwords = resp.Usermodel.Passwords,
+                                Loginid = resp.Loginid,
+                                Fullname = resp.Fullname,
+                                Phonenumber = resp.Phonenumber,
+                                Emailaddress = resp.Emailaddress,
+                                Roleid = resp.Roleid,
+                                Passharsh = resp.Passharsh,
+                                Passwords = resp.Passwords,
                             }
                         };
                         return userModel;

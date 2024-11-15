@@ -1,5 +1,4 @@
-﻿using Jwtauthenticationmanager;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Uttambsolutionsstaffdbl;
 using Uttambsolutionsstaffdbl.Entities;
 using Uttambsolutionsstaffdbl.Models;
@@ -11,12 +10,10 @@ namespace Uttambsolutionsstaff.Controllers
     public class StaffauthController : ControllerBase
     {
         private readonly BL bl;
-        private readonly Jwttokenhandler _jwttokenhandler;
         IConfiguration _config;
-        public StaffauthController(IConfiguration config, Jwttokenhandler jwttokenhandler)
+        public StaffauthController(IConfiguration config)
         {
             bl = new BL(Util.ShareConnectionString(config));
-            _jwttokenhandler = jwttokenhandler;
         }
 
         [HttpPost("Staffauthenticate")]

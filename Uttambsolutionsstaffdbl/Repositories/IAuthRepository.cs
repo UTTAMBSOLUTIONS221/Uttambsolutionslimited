@@ -4,6 +4,6 @@ namespace Uttambsolutionsstaffdbl.Repositories
 {
     public interface IAuthRepository
     {
-        Uttambsolutionsstaffresponce Validateuttambsolutionsstaffdata(string Username);
+        Usermodeldataresponce Validateuttambsolutionsstaffdata(string Username);
     }
 }

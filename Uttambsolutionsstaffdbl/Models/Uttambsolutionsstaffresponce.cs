@@ -10,11 +10,13 @@
     }
     public class Usermodeldataresponce
     {
+        public int RespStatus { get; set; }
+        public string? RespMessage { get; set; }
         public int Loginid { get; set; }
         public string? Fullname { get; set; }
         public string? Phonenumber { get; set; }
         public string? Emailaddress { get; set; }
-        public string? Passharsh { get; set; }
+        public string? Passwordhash { get; set; }
         public string? Passwords { get; set; }
         public int Roleid { get; set; }
         public int Loginstatus { get; set; }
