@@ -158,6 +158,9 @@
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:8002"
+    "BaseUrl": "http://localhost:8002", // Your Ocelot Gateway URL
+    "CorsOrigins": [ "http://localhost:3000" ], // CORS origins from React App
+    "AllowAnyMethod": true,
+    "AllowAnyHeader": true
   }
 }
