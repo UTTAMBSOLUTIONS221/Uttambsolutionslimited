@@ -4,7 +4,14 @@
     {
         public static string ShareConnectionString(IConfiguration config)
         {
-            return config["ConnectionStrings:DefaultConnection"];
+            // Retrieve the database connection details from environment variables
+            var Dbhost = Environment.GetEnvironmentVariable("DB_HOST");
+            var Dbname = Environment.GetEnvironmentVariable("DB_NAME");
+            var Dbusername = Environment.GetEnvironmentVariable("DB_USERNAME");
+            var Dbpassword = Environment.GetEnvironmentVariable("DB_SA_PASSWORD");
+            var Connectionstring = $"Data Source={Dbhost};Database={Dbname};User Id={Dbusername};Password={Dbpassword};TrustServerCertificate=true";
+            // Optionally, use the connection string from the app configuration if available
+            return Connectionstring;
         }
         public static void LogError(string userName, Exception ex, bool isError = true)
         {
