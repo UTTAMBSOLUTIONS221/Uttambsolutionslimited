@@ -160,9 +160,7 @@ namespace Uttambsolutionsstaffdbl
                                 Fullname = resp.Fullname,
                                 Phonenumber = resp.Phonenumber,
                                 Emailaddress = resp.Emailaddress,
-                                Roleid = resp.Roleid,
-                                Passharsh = resp.Passharsh,
-                                Passwords = resp.Passwords,
+                                Roleid = resp.Roleid
                             }
                         };
                         return userModel;
