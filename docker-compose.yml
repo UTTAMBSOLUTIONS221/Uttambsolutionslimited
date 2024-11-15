@@ -4,7 +4,7 @@ networks:
 
 services:
   # Staff Database 
-  uttambsolutionsstaffdb:
+  uttambsolutionsstaffdatabase:
      container_name: uttamb_solutions_limited_database
      image: mcr.microsoft.com/mssql/server:2022-latest
      environment:
@@ -25,7 +25,7 @@ services:
     networks:
        - backend
     environment:
-      - DB_HOST=uttamb_solutions_limited_staff_server
+      - DB_HOST=uttambsolutionsstaffdatabase
       - DB_NAME=Uttambsolutionsstaffdb
       - DB_USERNAME=sa
       - DB_SA_PASSWORD=Password123!

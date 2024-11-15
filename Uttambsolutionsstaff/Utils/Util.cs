@@ -13,10 +13,7 @@ namespace Uttambsolutionsstaff
             var Dbusername = Environment.GetEnvironmentVariable("DB_USERNAME");
             var Dbpassword = Environment.GetEnvironmentVariable("DB_SA_PASSWORD");
             // Construct the connection string
-            var connectionString = $"Data Source={Dbhost};Database={Dbname};User Id={Dbusername};Password={Dbpassword};TrustServerCertificate=true";
-
-            //EnsureDatabaseAndTables(Dbname, connectionString);
-            return connectionString;
+            return $"Data Source={Dbhost};Database={Dbname};User Id={Dbusername};Password={Dbpassword};TrustServerCertificate=true";
         }
 
         private static void EnsureDatabaseAndTables(string Dbname, string connectionString)
