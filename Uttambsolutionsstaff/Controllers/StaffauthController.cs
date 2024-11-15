@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Uttambsolutionsstaffdbl;
 using Uttambsolutionsstaffdbl.Entities;
 using Uttambsolutionsstaffdbl.Models;
@@ -8,7 +7,6 @@ namespace Uttambsolutionsstaff.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [EnableCors("AllowReactApp")] // Attach the CORS policy here
     public class StaffauthController : ControllerBase
     {
         private readonly BL bl;
