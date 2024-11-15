@@ -1,9 +1,20 @@
 networks:
   backend: 
-    driver: bridge
   frontend:
 
 services:
+  # Staff Database 
+  uttambsolutionsstaffdb:
+     container_name: uttamb_solutions_limited_database
+     image: mcr.microsoft.com/mssql/server:2022-latest
+     environment:
+        - ACCEPT_EULA=Y
+        - SA_PASSWORD=Password123!
+     ports:
+        - "18001:1433"
+     networks:
+        - backend
+
   # Staff Microservice
   uttambsolutionsstaff:
     container_name: uttamb_solutions_limited_staffs
@@ -13,6 +24,11 @@ services:
       dockerfile: Uttambsolutionsstaff/Dockerfile
     networks:
        - backend
+    environment:
+      - DB_HOST=Uttambsolutionsstaffdb
+      - DB_NAME=Uttambsolutionsstaff
+      - DB_USERNAME=sa
+      - DB_SA_PASSWORD=Password123!
 
   # Customer Microservice
   uttambsolutionscustomer:
@@ -23,6 +39,7 @@ services:
       dockerfile: Uttambsolutionscustomer/Dockerfile
     networks:
        - backend
+       
 
   # API Gateway
   apigateway:
@@ -36,19 +53,3 @@ services:
     networks:
        - backend
        - frontend
-
-  # SQL Server Database Service
-  sqlserver:
-    container_name: sqlserver
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    environment:
-      - ACCEPT_EULA=Y
-      - SA_PASSWORD=Password123!
-    ports:
-      - "1433:1433"
-    networks:
-      - backend
-    healthcheck:
-      test: ["CMD", "nc", "-z", "localhost", "1433"]
-      interval: 30s
-      retries: 5

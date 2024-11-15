@@ -7,11 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.Addcustomjwtauthentication();
 //Database configuration 
-//var Dbhost = Environment.GetEnvironmentVariable("DB_HOST");
-//var Dbname = Environment.GetEnvironmentVariable("DB_NAME");
-//var Dbusername = Environment.GetEnvironmentVariable("DB_USERNAME");
-//var Dbpassword = Environment.GetEnvironmentVariable("DB_SA_PASSWORD");
-//var Connectionstring = $"Data Source={Dbhost};Database={Dbname};User Id={Dbusername};Password={Dbusername};TrustServerCertificate=true";
+var Dbhost = Environment.GetEnvironmentVariable("DB_HOST");
+var Dbname = Environment.GetEnvironmentVariable("DB_NAME");
+var Dbusername = Environment.GetEnvironmentVariable("DB_USERNAME");
+var Dbpassword = Environment.GetEnvironmentVariable("DB_SA_PASSWORD");
+var Connectionstring = $"Data Source={Dbhost};Database={Dbname};User Id={Dbusername};Password={Dbusername};TrustServerCertificate=true";
 //builder.Services.AddDbContext<Staff>
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
