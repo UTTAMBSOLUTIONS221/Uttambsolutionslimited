@@ -98,7 +98,7 @@ namespace Uttambsolutionsstaffdbl
                 if (obj.Staffid == 0)
                 {
                     obj.Passwords = sec.Encrypt(obj.Passwords, Passwordhash);
-                    obj.Passwordhash = Passwordhash;
+                    obj.Passwordhash = str.RandomString(6, false);
                 }
                 var Resp = db.StaffRepository.Registeruttambsolutionsstaffdata(JsonConvert.SerializeObject(obj));
                 return Resp;
