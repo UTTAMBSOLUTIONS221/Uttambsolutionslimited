@@ -67,7 +67,7 @@ services:
       - DB_HOST=uttambsolutionscustomerdatabase
       - DB_NAME=Uttambsolutionscustomerdb
       - DB_USERNAME=sa
-      - DB_SA_PASSWORD=Password123!
+      - DB_SA_PASSWORD=Password1234!
        
 
   # API Gateway
