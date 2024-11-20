@@ -1,11 +1,43 @@
-﻿namespace Uttambsolutionscustomer
+﻿using Dapper;
+using Microsoft.Data.SqlClient;
+namespace Uttambsolutionscustomer
 {
     public class Util
     {
         public static string ShareConnectionString(IConfiguration config)
         {
-            return config["ConnectionStrings:DatabaseConnection"];
+            // Retrieve the database connection details from environment variables
+            var Dbhost = Environment.GetEnvironmentVariable("DB_HOST");
+            var Dbname = Environment.GetEnvironmentVariable("DB_NAME");
+            var Dbusername = Environment.GetEnvironmentVariable("DB_USERNAME");
+            var Dbpassword = Environment.GetEnvironmentVariable("DB_SA_PASSWORD");
+            var connectionString = $"Data Source={Dbhost};Database={Dbname};User Id={Dbusername};Password={Dbpassword};TrustServerCertificate=true";
+
+            EnsureDatabaseAndTables(Dbname, connectionString);
+            return connectionString;
         }
+
+        private static void EnsureDatabaseAndTables(string Dbname, string connectionString)
+        {
+            // Connect to master database to check if the target database exists
+            var masterConnectionString = connectionString.Replace($"Database={Dbname}", "Database=master");
+
+            using (var connection = new SqlConnection(masterConnectionString))
+            {
+                connection.Open();
+
+                // Check if database exists
+                var dbExistsQuery = "SELECT database_id FROM sys.databases WHERE Name = @DbName";
+                var databaseId = connection.QueryFirstOrDefault<int?>(dbExistsQuery, new { DbName = Dbname });
+
+                if (!databaseId.HasValue)
+                {
+                    // Create the database if it doesn't exist
+                    connection.Execute($"CREATE DATABASE [{Dbname}]");
+                }
+            }
+        }
+
         public static void LogError(string userName, Exception ex, bool isError = true)
         {
             try
