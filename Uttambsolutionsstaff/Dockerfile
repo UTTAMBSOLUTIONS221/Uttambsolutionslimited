@@ -12,7 +12,7 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["Uttambsolutionsstaff.csproj", "Uttambsolutionsstaff/"]
-COPY ["Uttambsolutionsstaffdbl/Uttambsolutionsstaffdbl.csproj", "Uttambsolutionsstaffdbl/"]
+COPY ["Uttambsolutionsstaffdbl.csproj", "Uttambsolutionsstaffdbl/"]
 RUN dotnet restore "./Uttambsolutionsstaff/Uttambsolutionsstaff.csproj"
 COPY . .
 WORKDIR "/src/Uttambsolutionsstaff"
