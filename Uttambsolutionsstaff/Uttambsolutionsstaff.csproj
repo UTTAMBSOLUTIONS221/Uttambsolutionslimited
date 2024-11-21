@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Jwtauthenticationmanager\Jwtauthenticationmanager.csproj" />
+    <ProjectReference Include="..\Jwtauthenticationmanager\Jwtauthenticationmanager.csproj" />
     <ProjectReference Include="..\Uttambsolutionsstaffdbl\Uttambsolutionsstaffdbl.csproj" />
   </ItemGroup>
 
