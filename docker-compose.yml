@@ -84,9 +84,3 @@ services:
        - backend
        - frontend
 
-  uttambsolutionsvehicles:
-    image: ${DOCKER_REGISTRY-}uttambsolutionsvehicles
-    build:
-      context: .
-      dockerfile: Uttambsolutionsvehicles/Dockerfile
-
