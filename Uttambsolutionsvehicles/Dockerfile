@@ -11,7 +11,7 @@ EXPOSE 8080
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Uttambsolutionsvehicles/Uttambsolutionsvehicles.csproj", "Uttambsolutionsvehicles/"]
+COPY ["Uttambsolutionsvehicles.csproj", "Uttambsolutionsvehicles/"]
 RUN dotnet restore "./Uttambsolutionsvehicles/Uttambsolutionsvehicles.csproj"
 COPY . .
 WORKDIR "/src/Uttambsolutionsvehicles"

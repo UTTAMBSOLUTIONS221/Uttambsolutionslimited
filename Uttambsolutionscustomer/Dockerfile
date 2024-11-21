@@ -11,7 +11,7 @@ EXPOSE 8080
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Uttambsolutionscustomer/Uttambsolutionscustomer.csproj", "Uttambsolutionscustomer/"]
+COPY ["Uttambsolutionscustomer.csproj", "Uttambsolutionscustomer/"]
 COPY ["Uttambsolutionscustomerdbl/Uttambsolutionscustomerdbl.csproj", "Uttambsolutionscustomerdbl/"]
 RUN dotnet restore "./Uttambsolutionscustomer/Uttambsolutionscustomer.csproj"
 COPY . .
